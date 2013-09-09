@@ -1,28 +1,21 @@
 <?php
   class SqliteDriver {
-    private $pdo, $query, $result;
+    private $pdo;
 
     public function __construct($file){
       try {
-        $pdo = new PDO("sqlite:".$file);
+        $this->pdo = new PDO("sqlite:".$file);
       } catch(PDOException $e){
         print $e->getMessage();
       }
     }    
 
     public function query($query){
-      $this->result = $pdo->query($query);
-      return $result::affected_rows;
+      return $this->pdo->query($query);
     }
 
-    public function fetch(){
-      return $result->fetchAssoc();
-    } 
-
-    public function count(){
-      return $this->$result->rowCount();
+    public function prepare($query){
+      return $this->pdo->prepare($query);
     }
-
- 
   }
 ?>

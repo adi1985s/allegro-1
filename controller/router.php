@@ -1,5 +1,7 @@
 <?php
-  function __autoload($class){
+  spl_autoload_register('autoloader');
+
+  function autoloader($class){
     list($filename, $suffix) = 
       preg_split('/(?=[A-Z])/', $class, -1, PREG_SPLIT_NO_EMPTY);
 
@@ -21,6 +23,8 @@
   
   $parsed = explode('&', $request);
   $page = array_shift($parsed);
+
+  $page = $page == '' ? 'login' : $page;
 
   $args = array();
   foreach($parsed as $argument){
