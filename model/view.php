@@ -5,7 +5,7 @@
     private $render = FALSE;
     
     public function __construct($template){
-      $file = 'view/'.strtolower($template).'.php';
+      $file = 'view/' . strtolower($template) . '.php';
       if(file_exists($file))
         $this->render = $file;
     }
@@ -24,7 +24,11 @@
       
       if($direct_output !== TRUE) return ob_get_clean();
     }
-    
+
+    public function setTemplate($template){
+      $this->render = 'view/' . $template . '.php';
+    }    
+
     public function __destruct(){
     }
   }

@@ -1,24 +1,67 @@
 body {
   font-family: Arial;
   font-size: 12pt;
+  color: #666;
 }
 
-#accountForm {
-  width: 150px;
+#wrapper {
+  width: 200px;
   margin: 0 auto;
 }
 
-#accountForm label {
+#wrapper form {
+  width: 150px;
 }
 
-#accountForm input[type!=submit] {
+#wrapper label {
+}
+
+input[type="text"], input[type="password"] {
   border: 1px solid #aaa;
-  margin: 5px;
+  margin-bottom: 5px;
   width: 100%;
   clear: both;
 }
 
-#submit {
-  margin-top: 5px;
-  width: 50px;
+#control {
+  text-align: center;
+  width: 400px;
 }
+
+#control a {
+  margin-right: 10px;
+}
+
+#submit {
+  border: 1px solid #aaa;
+  color: #aaa;
+  background: #fff;
+  padding: 5px;
+  margin-top: 5px;
+  margin-right: 20px;
+  width: 90px;
+}
+
+#submit:hover {
+  cursor: pointer;
+  border: 1px solid #a00;
+  color: #a00;
+}
+
+
+
+a, a:link, a:visited {
+  text-decoration: none;
+  color: #aaa;
+}
+
+a:hover {
+  color: #a00;
+}
+
+#nav ul, #nav li {
+  list-style: none;
+  display: inline-block;
+}
+
+
