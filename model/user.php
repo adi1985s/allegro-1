@@ -47,7 +47,7 @@ class UserModel {
             $query->execute(array($user['id']));
             if($query->fetchAll()){
                 $_SESSION['user'] = $user;
-                return TRUE;
+                return $user;
             } else 
                 $this->setError('Twoje konto jest nieaktywne. Sprawdź swój e-mail.');
         } else 
@@ -61,7 +61,7 @@ class UserModel {
     }
 
     public function logged(){
-        return isset($_SESSION['user']);
+        return isset($_SESSION['user']) ? $_SESSION['user'] : FALSE;
     }
 
     public function activate($code){

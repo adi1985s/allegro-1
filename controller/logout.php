@@ -1,12 +1,9 @@
 <?php
 
 class LogoutController {
-    public function execute($params){
+    public function execute($args){
         $userModel = new UserModel();
-        $viewModel = new ViewModel("login");
-
         $userModel->logout();
-
-        $viewModel->display();
+        header('Location: index.php');
     }
 }

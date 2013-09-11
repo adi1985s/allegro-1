@@ -1,0 +1,48 @@
+.item {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    height: 150px;
+    width: 180px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.buy, .bid {
+    display: inline-block;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #f60;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.bid a, .buy a {
+    color: #fff;
+}
+
+.bid {
+    background: #888;
+}
+
+
+
+.item .price {
+    margin-left: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.item .name {
+}
+
+.item img {
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+}

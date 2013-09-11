@@ -1,15 +1,9 @@
-<?php
-  if(isset($data['error'])) print $data['error'];
-?>
-<div id="wrapper">
-  <form method="post" action="?login">
+<form method="post" action="?account">
     <label>Login:</label><input type="text" name="login"><br>
     <label>Hasło:</label><input type="password" name="password"><br>
-    <input type="submit" value="Login" id="submit">
-  </form>
-  <div id="control">
-    <a href="?register">Zarejestruj się</a>
+    <input type="submit" value="Zaloguj się" id="submit">
+</form>
+<div id="control">
     <a href="?remember">Nie pamiętasz hasła?</a>
-  </div>
 </div>
 

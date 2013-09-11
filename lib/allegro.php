@@ -12,6 +12,7 @@ class AllegroFacade {
         define('ALLEGRO_ID', '0000');
         define('ALLEGRO_LOGIN', $nick);
         $this->allegro = new AllegroWebAPI();
+        if(!empty($nick)) $this->setUser($nick);
     }      
 
     
@@ -22,7 +23,7 @@ class AllegroFacade {
         return $id;
     }
 
-    public function getItems($offset, $limit){
+    public function getItems($offset = 0, $limit = 16){
         $options['offset'] = $offset;
         $options['limit'] = $limit;
         return $this->allegro->GetUserItems($options);

@@ -8,6 +8,8 @@
         switch(strtolower($suffix)){
             case 'model': 
                 $directory = 'model/'; break;
+            case 'controller':
+                $directory = 'controller/'; break;
             case 'driver':
             default:
                 $directory = 'lib/';
@@ -26,11 +28,11 @@
     $parsed = explode('&', $request);
     $page = array_shift($parsed);
 
-    $page = $page == '' ? 'login' : $page;
+    $page = $page == '' ? 'account' : $page;
 
     $args = array();
     foreach($parsed as $argument){
-        list($varible, $value) = preg_split('/=/', $argument);
+        list($varible, $value) = preg_split('/(=|$)/', $argument, 0);
         $args[$varible] = $value;
     }  
   
