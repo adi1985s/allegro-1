@@ -1,7 +1,5 @@
 <?php
-    spl_autoload_register('autoloader');
-
-    function autoloader($class){
+    function __autoload($class){
         list($filename, $suffix) = 
         preg_split('/(?=[A-Z])/', $class, -1, PREG_SPLIT_NO_EMPTY);
 
