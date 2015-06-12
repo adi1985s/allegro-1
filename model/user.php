@@ -38,7 +38,6 @@ class UserModel {
     }
 
     public function login($login, $password){
-        $password = md5($password);
         $query = $this->database->prepare($this->login);
         $query->execute(array($login, $password));
         if($user = $query->fetch()){

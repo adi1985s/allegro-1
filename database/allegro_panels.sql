@@ -10,7 +10,8 @@ USE allegro_panels;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
-    login VARCHAR(30) PRIMARY KEY NOT NULL,
+    id VARCHAR(30) PRIMARY KEY NOT NULL,
+    login VARCHAR(30) NOT NULL,
     `password` VARCHAR(50) NOT NULL,
     nick  VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
