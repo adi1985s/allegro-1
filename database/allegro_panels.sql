@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     login VARCHAR(30) PRIMARY KEY NOT NULL,
+    `password` VARCHAR(50) NOT NULL,
     nick  VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     activate BOOL NOT NULL

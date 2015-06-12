@@ -1,24 +1,23 @@
 <?php
 
 class UserModel {
-    private $database, $error;    
+    private $database, $error;
 
-    private $insert = "INSERT INTO users(login,password,email,nick,activate) VALUES(?,?,?,?,?)";
+    private $insert = "INSERT INTO users(login,password,email,nick,activate)
+        VALUES(?,PASSWORD(?),?,?,?)";
     private $exists = "SELECT * FROM users WHERE ";
-    private $login = "SELECT id,login,email,nick FROM users WHERE login=? AND password=?";
+    private $login = "SELECT id,login,email,nick FROM users WHERE login=? AND password=PASSWORD(?)";
     private $active = "SELECT id FROM users WHERE id=? AND activate=1";
     private $activate = "UPDATE users SET activate=1 WHERE activate=?";
 
-    public function __construct(){ 
+    public function __construct(){
         $this->database = new MysqlDriver();
     }
 
     public function register($login, $password, $email, $nick){
-        $password = md5($password);
-
         $properties = compact('login', 'email', 'nick');
 
-        foreach($properties as $property => $value){ 
+        foreach($properties as $property => $value){
             $query = $this->database->prepare($this->exists . $property . '=?');
             $query->execute(array($value));
             if($query->fetchAll()){
@@ -32,7 +31,7 @@ class UserModel {
             $this->setError("Podane konto allegro nie istnieje!");
         }
 
-        $code = md5(uniqid(time()));
+        $code = sha1(uniqid(time()));
         $query = $this->database->prepare($this->insert);
         $query->execute(array($login, $password, $email, $nick, $code));
         return $this->sendActivation($email, $code);
@@ -48,11 +47,11 @@ class UserModel {
             if($query->fetchAll()){
                 $_SESSION['user'] = $user;
                 return $user;
-            } else 
+            } else
                 $this->setError('Twoje konto jest nieaktywne. Sprawdź swój e-mail.');
-        } else 
+        } else
             $this->setError('Błędne dane.');
-        
+
         return FALSE;
     }
 
@@ -69,13 +68,13 @@ class UserModel {
         $query->execute(array($code));
         return $query->rowCount();
     }
- 
+
     public function sendActivation($email, $code){
         $mail = new MailFacade();
         $mail->addAddress($email);
 
         $body = file_get_contents('database/active.html');
-        $body = str_replace("URL", $_SERVER['HTTP_HOST'] . '/' 
+        $body = str_replace("URL", $_SERVER['HTTP_HOST'] . '/'
             . basename(dirname($_SERVER['PHP_SELF'])) . '/', $body);
         $body = str_replace("CODE", $code, $body);
 
