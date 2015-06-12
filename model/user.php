@@ -10,7 +10,7 @@ class UserModel {
     private $activate = "UPDATE users SET activate=1 WHERE activate=?";
 
     public function __construct(){ 
-        $this->database = new SqliteDriver('database/db.sqlite');
+        $this->database = new MysqlDriver();
     }
 
     public function register($login, $password, $email, $nick){
